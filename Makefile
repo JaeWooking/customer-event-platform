@@ -39,6 +39,9 @@ tf-apply:
 docker-auth:
 	gcloud auth configure-docker $(REGION)-docker.pkg.dev
 
+server-run:
+	cd apps/api/ && uvicorn app.main:app --reload
+
 
 
 
