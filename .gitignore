@@ -5,11 +5,11 @@ __pycache__/
 .env
 
 # Terraform
-**/.terraform/*
+terraform/.terraform/
+**/.terraform/
 *.tfstate
 *.tfstate.*
 terraform.tfvars
-crash.log
 
 # macOS
 .DS_Store
@@ -20,3 +20,5 @@ crash.log
 
 # Docker
 *.log
+
+
