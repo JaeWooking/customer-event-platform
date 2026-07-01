@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from app.schemas.event import CustomerEventRequest
-from app.services.publisher import publish_event
+from schemas.event import CustomerEventRequest
+from services.publisher import publish_event
 
 router = APIRouter(
     prefix="/events",

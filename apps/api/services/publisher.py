@@ -4,8 +4,8 @@ from datetime import UTC, datetime
 
 from google.cloud import pubsub_v1
 
-from app.config import settings
-from app.schemas.event import CustomerEvent, CustomerEventRequest
+from config import settings
+from schemas.event import CustomerEvent, CustomerEventRequest
 
 publisher = pubsub_v1.PublisherClient()
 
