@@ -16,24 +16,40 @@ subscription_path = subscriber.subscription_path(
 
 
 def callback(message):
-
+    logger.info(
+        "id=%s attempt=%s ack_id=%s",
+        message.message_id,
+        message.delivery_attempt,
+        message.ack_id[:20],
+    )
     try:
-        payload = json.loads(message.data.decode())
-        event = CustomerEvent(**payload)
-        process_event(event)
-        message.ack()
-
-        # print(f"Processed: {event.event_id}")
-        logger.info("Event processed", extra={
-            "event_id": event.event_id,
-            "event_name": event.event_name,
-        },
-)
+        raise RuntimeError("TEST DLQ")
 
     except Exception as e:
-        # print(e)
         logger.exception(e)
         message.nack()
+
+
+
+# def callback(message):
+
+#     try:
+#         payload = json.loads(message.data.decode())
+#         event = CustomerEvent(**payload)
+#         process_event(event)
+#         message.ack()
+
+#         # print(f"Processed: {event.event_id}")
+#         logger.info("Event processed", extra={
+#             "event_id": event.event_id,
+#             "event_name": event.event_name,
+#         },
+# )
+
+#     except Exception as e:
+#         # print(e)
+#         logger.exception(e)
+#         message.nack()
 
 
 def start_consumer():
